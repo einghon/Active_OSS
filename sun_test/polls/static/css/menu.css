@@ -42,7 +42,8 @@ body {
   color: #001a33;
 }
 
-div.content {
+div .content {
+  margin-top: -100px;
   margin-left: 220px;
   padding: 1px 16px;
 }

@@ -32,8 +32,174 @@
 
     <script src="{% static "js/respond.min.js" %}"></script>
     <![endif]-->
+    <style>
+label {
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 0.2em;
+}
+
+.input {
+    border-radius:6px;
+    margin-top: 10px;
+    margin-bottom: 1em;
+    padding: 13px 12px;
+    border: 1.5px solid #fff;
+    background-color:#ccf2ff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width:45%;
+}
+
+select {
+    margin-bottom: 0.6em;
+    padding-top:6px;
+    align-items: center;
+}
+.input span {
+    font-size: 15px;
+    color: #464646;
+    margin-right: 10px;
+}
+
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #003333; /* Fallback color */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width:40%;
+  height: 376px;
+  border-radius:6px;
+  padding:16px 16px 5px;
+}
+.submit {
+    margin: 1.6em inherit;
+    margin-right: 20px;
+    float:left;
+    background: #008080;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    display: block;
+    color: #fff;
+    border-radius:5px;
+    padding: 13px 6px;
+    font-size: 16px;
+}
+
+.submit1 {
+    margin: 1.4em 2em;
+    
+    float:right;
+    background: #008080;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+    color: #fff;
+    border-radius:5px;
+    padding: 13px 10px;
+    font-size: 16px;
+}
+
+.submit:hover {
+    background:#00394d;
+    -webkit-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    transition: 0.5s all;
+}
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+}
+
+#login{
+    margin-left: 180px;
+    margin-top:-10px;
+    color:#002633;
+}
+</style>
+
 </head>
 <body>
+    <div id="id01" class="modal">
+  
+  <form class="modal-content animate">
+    <div class="container">
+    <h2 id="login">User Login</h2>
+      <label for="uname"><b>Username</b></label>
+      <input class="input" type="text" placeholder="Username" name="username" required/>
+
+      <label for="psw"><b>Password</b></label>
+      <input class="input" type="password" placeholder="Enter Password" name="psw" required>
+      
+      <button type="button" style="width:21%;" onclick="document.getElementById('id01').style.display='none'" class="submit">Cancel</button>
+      <button type="submit" class="submit" style="width:21%;">Login</button>
+    </div>
+  </form>
+</div>
     <!-- Preloader -->
     <div class="preloader"></div>
 
@@ -104,7 +270,7 @@
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#" class="nav_searchFrom">&nbsp&nbspLogin<img src="{% static "images/login.png" %}" style="width:45px;height:45px;"></a></li>
+                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="submit1">Login</button>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div>
@@ -149,12 +315,12 @@
                     <p>Customer များ၏ အခြေခံလိုအပ်သော စာရွက်စာတမ်းများ(ထောက်ခံစာများ)အား အဆင်ပြေချောမွေ့စေရန်နှင့် အလွယ်တကူ မြန်ဆန်စွာ ဝန်ဆောင်မှုပေးနိုင်ရန်  အတွက်  ပြုလုပ်ထားပါသည်။ </p>
                 </div>
                 <div class="col-md-3 col-sm-6 builder">
-                    <i class="fa fa-building" aria-hidden="true"></i>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
                     <h4>အချိန်ကုန်သက်သာစေခြင်း</h4>
                     <p>ပြည်သူများအတွက် အချိန်ကုန်သက်သာပြီး ဌာနဆိုင်ရာများနှင့် လွယ်ကူစွာ ဆောင်ရွက်နိုင်စေရန် သက်ဆိုင်ရာဌာနများမှ တာဝန်ယူဆောင်ရွက်ပေးရမည့် လုပ်ငန်းများကို တစ်နေရာတည်းတွင် စုပေါင်း၍  ပြည်သူ့ဝန်ဆောင်မှုလုပ်ငန်းများကို ဆောင်ရွက်ပေးပါသည်။ </p>
                 </div>
                 <div class="col-md-3 col-sm-6 builder">
-                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <i class="fa fa-dollar" aria-hidden="true"></i>
                     <h4>ငွေကုန်သက်သာစေခြင်း</h4>
                     <p>ပြည်သူများ၏ လိုအပ်သော စာရွက်စာတမ်းများအား ရိုးရှင်းလွယ်ကူစွာကြိုးစား ဆောင်ရွက်ပေးမှုများကြောင့် ပြည်သူများအနေဖြင့် မိမိတို့ရယူလိုသော ဝန်ဆောင်မှုများကို ဌာနဆိုင်ရာများတွင် အချိန်ကုန်၊ ငွေကုန်ခံ၍ သွားရောက်ဆောင်ရွက်ရန် မလိုတော့ဘဲ  OSS တခုတည်းရှိရုံဖြင့် အချိန်ကုန် ငွေကုန်သက်သာစွာဆောင်ရွက်နိုင်ပါ</p>
                 </div>
@@ -272,7 +438,17 @@
 
     </footer>
     <!-- End Footer Area -->
+    <script>
+// Get the modal
+var modal = document.getElementById('id01');
 
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 
 
     <script src="{% static "js/jquery-1.12.0.min.js" %}"></script>
