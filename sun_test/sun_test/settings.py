@@ -84,35 +84,18 @@ WSGI_APPLICATION = 'sun_test.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default':{},
-
-
-    'CrimeRecord': {
-        'ENGINE': 'django_cassandra_engine',
-            'NAME': 'test_1',
-            'TEST_NAME': 'test_1',
-            'HOST': '172.20.5.45,127.0.0.1',
-            'OPTIONS': {
-                'replication': {
-                    'strategy_class': 'SimpleStrategy',
-                    'replication_factor': 3
-    }
-    }
-},
-
-    'TestModel': {
-        'ENGINE': 'django_cassandra_engine',
+    
+    'default': {  
+ 'ENGINE': 'django_cassandra_engine',
             'NAME': 'ndb',
             'TEST_NAME': 'ndb',
-            'HOST': '127.0.0.1',
+            'HOST': 'localhost',
             'OPTIONS': {
                 'replication': {
                     'strategy_class': 'SimpleStrategy',
                     'replication_factor': 3
     }
-    }
-},
-
+    }}
 }
 
 # Password validation

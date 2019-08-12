@@ -15,6 +15,10 @@ from django.contrib.auth.models import User
     '''
 
 class TestModel(DjangoCassandraModel):
+
+    _table_name = "test_model"
+    __keyspace__ = "ndb"
+
     nrc   = columns.Text(primary_key=True,required=False)
     name  = columns.Text(required=False)
     occupation  = columns.Text(required=False)

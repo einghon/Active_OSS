@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+ <table>
+ 	
+              <tbody>
+              	<tr><td>hi</td></tr>
+              {% for b in  Test1 %}
+                <tr class="row100 body">
+                  <td class="cell100 column2">{{ b.nid }}</td>
+                  <td>hi</td>
+                  <td class="cell100 column3">{{ b.name }}</td>
+
+                 </tr>
+                {% endfor %}
+            
+              {% for a in  Test2 %}
+                <tr class="row100 body">
+                  <td class="cell100 column2">{{ a.nid }}</td>
+                  <td>hi</td>
+                  <td class="cell100 column3">{{ a.age }}</td>
+                  
+                 </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+</body>
+</html>

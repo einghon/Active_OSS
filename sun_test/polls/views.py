@@ -27,6 +27,7 @@ from reportlab.lib.fonts import addMapping
 from .fusioncharts import FusionCharts
 import datetime
 import json
+from django.contrib import messages
 
 '''
 def index(request):
@@ -198,25 +199,11 @@ def request_crime_record(request):
             canv.showPage()
             canv.save()
 
-        elif(totalcount==0):
-            
-            next_line='\n'
-            pdf_content=u"မင်္ဂလာဒုံမြို့နယ်--------------------------------"+next_line+"စာအမှတ်၊     1/သဃအ-ရကအ/၂၀ -------------\nရက်စွဲ၊"+timestampStr+'\n---------------------အကြောင်းအရာ။    ထောက်ခံချက်--------------------------------------------------- \n\n'+aa.get('nrc')+'သည် ပြစ်မှုကင်းစင်ကြောင် ကျေးကျေးရွာအုပ်စုအတွင်း...ကျေးရွာအုပ်စုအတွင်း...အပိုင်ဆယ်အိမ်မှူး/ရာအိမ်မှူး ၏ထောက်ခံချက်အရ ...မှန်ကန်ကြောင်း ထပ်ဆင့်ထောက်ခံအပ်ပါသည်။'
-            pdf_content.replace("\n", "<br />")
+        elif(totalcount==0):   
+            messages.info(request, 'The requested NRC had commited a crime. Therefore the system cannot provide approval letter')
 
-            styles = getSampleStyleSheet()
-            styles["Title"].fontName = 'Pyidaungsu'
-            para = Paragraph(pdf_content, styles["Title"])
-            canv = canvas.Canvas('test_mm_font1.pdf')
 
-            para.wrap(width, height)
-            para.drawOn(canv, 0, height/2)
-
-            canv.showPage()
-            canv.save()    
-           
-
-        return response
+        return HttpResponseRedirect('/request_crime_record/')
     
     else:
         form = TestModel()
